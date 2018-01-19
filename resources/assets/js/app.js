@@ -4,18 +4,13 @@ import sample from './data';
 var app = new Vue({
   el: '#app',
 
-  data: {
-    title: sample.title,
-    address: sample.address,
-    about: sample.about,
-    contracted: true,
-    amenities: sample.amenities,
-    prices: sample.prices,
+  data: Object.assign(sample, {
     headerImageStyle: {
       'background-image': 'url(images/header.jpg)'
     },
+    contracted: true,
     modalOpen: false
-  },
+  }),
 
   methods: {
     escapeKeyListener (evt) {
