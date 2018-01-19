@@ -8,6 +8,7 @@
   <title>Vuebnb</title>
 
   <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/vue-style.css') }}" type="text/css">
 
   <script type="text/javascript">
     // include the data for this view (resource)
@@ -33,7 +34,7 @@
     <div
         class="header-img"
         v-bind:style="headerImageStyle"
-        v-on:click="modalOpen = true"
+        v-on:click="openModal"
       >
       <button class="view-photos">View Photos</button>
     </div>
@@ -81,15 +82,10 @@
 
   </div>
 
-  <div id="modal" v-bind:class="{ show : modalOpen }">
-    <button v-on:click="modalOpen = false" class="modal-close">
-      &times;
-    </button>
-    <div class="modal-content">
-      <image-carousel :images="images"></image-carousel>
-    </div>
-  </div>
-
+  <modal-window ref="imagemodal">
+    <image-carousel :images="images"></image-carousel>
+  </modal-window>
+  
 </div>
 
 

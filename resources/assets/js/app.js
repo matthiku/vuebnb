@@ -5,49 +5,27 @@ let model = JSON.parse(window.vuebnb_listing_model);
 model = populateAmenitiesAndPrices(model)
 
 import ImageCarousel from '../components/ImageCarousel.vue'
-import CarouselControl from '../components/CarouselControl.vue'
+import ModalWindow from '../components/ModalWindow.vue'
 
 var app = new Vue({
+
   el: '#app',
+
+  components: {
+    ModalWindow,
+    ImageCarousel
+  },
 
   data: Object.assign(model, {
     headerImageStyle: {
       'background-image': `url(${model.images[0]})`
     },
-    contracted: true,
-    modalOpen: false
+    contracted: true
   }),
 
   methods: {
-    escapeKeyListener (evt) {
-      if (evt.keyCode === 27 && this.modalOpen) {
-        this.modalOpen = false;
-      }
+    openModal () {
+      this.$refs.imagemodal.modalOpen = true;
     }
-  },
-
-  watch: {
-    modalOpen () {
-      var className = 'modal-open';
-      if (this.modalOpen) {
-        document.body.classList.add(className);
-      } else {
-        document.body.classList.remove(className);
-      }
-    }
-  },
-
-  components: {
-    ImageCarousel,
-    CarouselControl
-  },
-
-  created () {
-    document.addEventListener('keyup', this.escapeKeyListener);
-  },
-
-  destroyed () {
-    document.removeEventListener('keyup', this.escapeKeyListener);
   }
-
 });

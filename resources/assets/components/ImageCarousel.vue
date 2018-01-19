@@ -12,7 +12,13 @@
 </template>
 
 <script>
+import CarouselControl from '../components/CarouselControl.vue'
+
 export default {
+  components: {
+    CarouselControl
+  },
+
   props: ['images'],
 
   data() {
@@ -39,5 +45,23 @@ export default {
 </script>
 
 <style>
+.image-carousel img {
+  width: 100%;
+}
 
+.image-carousel {
+  height: 100%;
+  margin-top: -12vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-carousel .controls {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 </style>
