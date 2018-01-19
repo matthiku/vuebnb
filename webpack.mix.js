@@ -33,7 +33,6 @@ mix
   .copy('resources/assets/images', 'public/images')
 
   .browserSync({ 
-    proxy: process.env.APP_URL,
-    open: true
+    proxy: process.env.APP_URL
   })
 ;

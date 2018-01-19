@@ -8,6 +8,12 @@
   <title>Vuebnb</title>
 
   <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+
+  <script type="text/javascript">
+    // include the data for this view (resource)
+    window.vuebnb_listing_model = "{!! addslashes(json_encode($model)) !!}"
+  </script>
+
 </head>
 
 
@@ -80,7 +86,7 @@
       &times;
     </button>
     <div class="modal-content">
-      <img src="{{ asset('images/header.jpg') }}"/>
+      <image-carousel :images="images"></image-carousel>
     </div>
   </div>
 

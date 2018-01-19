@@ -1,12 +1,18 @@
 import Vue from 'vue';
-import sample from './data';
+import { populateAmenitiesAndPrices } from './helpers';
+
+let model = JSON.parse(window.vuebnb_listing_model);
+model = populateAmenitiesAndPrices(model)
+
+import ImageCarousel from '../components/ImageCarousel.vue'
+import CarouselControl from '../components/CarouselControl.vue'
 
 var app = new Vue({
   el: '#app',
 
-  data: Object.assign(sample, {
+  data: Object.assign(model, {
     headerImageStyle: {
-      'background-image': 'url(images/header.jpg)'
+      'background-image': `url(${model.images[0]})`
     },
     contracted: true,
     modalOpen: false
@@ -29,6 +35,11 @@ var app = new Vue({
         document.body.classList.remove(className);
       }
     }
+  },
+
+  components: {
+    ImageCarousel,
+    CarouselControl
   },
 
   created () {

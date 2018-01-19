@@ -125,6 +125,40 @@ button {
   left: 20px;
 }
 
+.image-carousel img {
+  width: 100%;
+}
+
+.image-carousel {
+  height: 100%;
+  margin-top: -12vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-carousel .controls {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-control {
+  padding: 1rem;
+  color: #ffffff;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+@media (min-width: 744px) {
+  .carousel-control {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+}
+
 #modal {
   display: none;
   position: fixed;
