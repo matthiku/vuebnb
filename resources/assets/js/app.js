@@ -1,31 +1,15 @@
 import Vue from 'vue';
-import { populateAmenitiesAndPrices } from './helpers';
 
-let model = JSON.parse(window.vuebnb_listing_model);
-model = populateAmenitiesAndPrices(model)
-
-import ImageCarousel from '../components/ImageCarousel.vue'
-import ModalWindow from '../components/ModalWindow.vue'
+import ListingPage from '../components/ListingPage.vue'
 
 var app = new Vue({
 
   el: '#app',
 
   components: {
-    ModalWindow,
-    ImageCarousel
+    ListingPage
   },
 
-  data: Object.assign(model, {
-    headerImageStyle: {
-      'background-image': `url(${model.images[0]})`
-    },
-    contracted: true
-  }),
+  render: h => h(ListingPage)
 
-  methods: {
-    openModal () {
-      this.$refs.imagemodal.modalOpen = true;
-    }
-  }
 });
