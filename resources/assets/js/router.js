@@ -11,8 +11,16 @@ export default new VueRouter({
   mode: 'history',
 
   routes: [
-    { path: '/', component: Homepage },
-    { path: '/listing/:listing', component: ListingPage}
+    { 
+      path: '/',
+      component: HomePage,
+      name: 'home' 
+    },
+    { 
+      path: '/listing/:listing',
+      component: ListingPage,
+      name: 'listing'
+    }
   ]
 
 });

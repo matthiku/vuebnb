@@ -12,7 +12,7 @@
 
   <script type="text/javascript">
     // include the data for this view (resource)
-    window.vuebnb_listing_model = "{!! addslashes(json_encode($model)) !!}"
+    window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
   </script>
 
 </head>
