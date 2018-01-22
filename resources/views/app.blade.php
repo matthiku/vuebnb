@@ -20,18 +20,9 @@
 
 <body>
 
-<div id="toolbar">
+  <div id="app"></div>
 
-  <img class="icon" src="{{ asset('images/logo.png') }}">
-  <h1>vuebnb</h1>
-
-</div>
-
-
-<div id="app"></div>
-
-
-<script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 
