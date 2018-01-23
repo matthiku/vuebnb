@@ -5,13 +5,25 @@ body {
   margin: 0;
 }
 
-.container {
+.listing-container {
   margin: 0 auto;
+  padding: 0 12px;
 }
 
 @media (min-width: 744px) {
-  .container {
+  .listing-container {
     width: 696px;
+  }
+}
+
+.home-container {
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+@media (min-width: 1131px) {
+  .home-container {
+    width: 1080px;
   }
 }
 

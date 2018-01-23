@@ -2,12 +2,13 @@
   <div>
 
     <header-image
+        v-if="images[0]"
         :image-url="images[0]"
         @header-clicked="openModal"
       >
     </header-image>
 
-    <div class="container">
+    <div class="listing-container">
 
       <div class="heading">
         <h1>{{ title }}</h1>
@@ -48,16 +49,17 @@
 <script>
   import { populateAmenitiesAndPrices } from '../js/helpers';
 
-  let serverData = JSON.parse(window.vuebnb_server_data);
-  var model = populateAmenitiesAndPrices(serverData.listing)
-
   import ImageCarousel from './ImageCarousel.vue'
   import ModalWindow from './ModalWindow.vue'
   import HeaderImage from './HeaderImage.vue'
   import FeatureList from './FeatureList.vue'
   import ExpandableText from './ExpandableText.vue'
 
+  import routeMixin from '../js/route-mixin'
+
   export default {
+    mixins: [ routeMixin],
+
     components: {
       ExpandableText,
       FeatureList,
@@ -67,10 +69,20 @@
     },
 
     data() { 
-      return Object.assign(model, {})
+      return {
+        title: null,
+        about: null,
+        address: null,
+        amenities: [],
+        prices: [],
+        images: []
+      }
     },
 
     methods: {
+      assignData ({ listing }) {
+        Object.assign(this.$data, populateAmenitiesAndPrices(listing))
+      },
       openModal () {
         this.$refs.imagemodal.modalOpen = true;
       }

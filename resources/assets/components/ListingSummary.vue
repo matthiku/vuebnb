@@ -1,15 +1,26 @@
 <template>
   <div class="listing-summary">
-    <div class="wrapper">
+
+    <router-link
+        tag="div" 
+        class="wrapper cursor-pointer"
+        :to="{name: 'listing', params: {listing: listing.id}}" 
+      >
+
       <div class="thumbnail" :style="backgroundImageStyle"></div>
+
       <div class="info title">
         <span>{{ listing.price_per_night }}</span>
         <span>{{ listing.title }}</span>
       </div>
+
       <div class="info address">{{ listing.address }}</div>
-    </div>
+
+    </router-link>
+
   </div>
 </template>
+
 
 <script>
   export default {
@@ -24,7 +35,12 @@
   }
 </script>
 
+
 <style>
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
   .listing-summary {
     flex: 0 0 auto;
   }
