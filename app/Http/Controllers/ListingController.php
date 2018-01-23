@@ -9,9 +9,8 @@ use App\Listing;
 class ListingController extends Controller
 {
 
-    /*
-    Abstract any common logic from our listing route methods into a new helper method.
-    Nest the Listing model inside a Laravel Collection under the listing ke
+    /*  Abstract any common logic from our listing route methods into a new helper method.
+        Nest the Listing model inside a Laravel Collection under the listing ke
     */
     private function get_listing($listing) 
     {
@@ -24,9 +23,17 @@ class ListingController extends Controller
     }
 
 
+    // add path (and other properties) to the response data
+    private function add_meta_data($collection, $request)
+    {
+        return $collection->merge([
+            'path' => $request->getPathInfo()
+        ]);
+    }
 
-    // homepage route
-    public function get_home_web() {
+
+    private function get_listing_summaries()
+    {
         $collection = Listing::all([
             'id', 'address', 'title', 'price_per_night'
         ]);
@@ -36,10 +43,21 @@ class ListingController extends Controller
             );
             return $listing;
         });
-        $data = collect(['listings' => $collection->toArray()]);
-        return view('app', ['data' => $data]);
+        return collect(['listings' => $collection->toArray()]);
     }
 
+    // homepage route
+    public function get_home_web(Request $request) {
+        $data = $this->get_listing_summaries();
+        $data = $this->add_meta_data($data, $request);
+        return view('app', ['data' => $data]);
+    }
+    // homepage API - data via AJAX
+    public function get_home_api()
+    {
+        $data = $this->get_listing_summaries();
+        return response()->json($data);
+    }
 
 
     // get a single resource for the API
@@ -61,10 +79,11 @@ class ListingController extends Controller
 
 
     // get a single resource for the Web
-    public function get_listing_web(Listing $listing)
+    public function get_listing_web(Listing $listing, Request $request)
     {
-        $model = $this->get_listing($listing);
+        $data = $this->get_listing($listing);
+        $data = $this->add_meta_data($data, $request);
 
-        return view('app', ['data' => $model]);
+        return view('app', ['data' => $data]);
     }
 }
