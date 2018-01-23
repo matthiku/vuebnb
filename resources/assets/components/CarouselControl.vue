@@ -1,7 +1,11 @@
 <template>
-  <i :class="classes" @click="clicked">
+  <i 
+      :class="classes"
+      @click="clicked"
+    >
   </i>
 </template>
+
 
 <script>
 export default {
@@ -23,18 +27,19 @@ export default {
 }
 </script>
 
-<style>
-.carousel-control {
-  padding: 1rem;
-  color: #ffffff;
-  opacity: 0.85;
-  cursor: pointer;
-}
 
-@media (min-width: 744px) {
+<style>
   .carousel-control {
-    font-size: 3rem;
+    padding: 1rem;
+    color: #ffffff;
+    opacity: 0.85;
     cursor: pointer;
   }
-}
+
+  @media (min-width: 744px) {
+    .carousel-control {
+      font-size: 3rem;
+      cursor: pointer;
+    }
+  }
 </style>
