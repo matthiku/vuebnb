@@ -1,3 +1,22 @@
+<!--
+
+NAME:
+  ExpandableText
+
+TYPE:
+  Vue Single File Component 
+
+PURPOSE:  
+  Shows text in a paragraph of limited height 
+  with the option to extend to the full text
+
+PARENT:
+  ListingPage
+
+DATA:
+  (text) provided via the default slot
+
+-->
 <template>
   <div>
 
@@ -15,15 +34,17 @@
   </div>  
 </template>
 
+
 <script>
-export default {
-  data () {
-    return {
-      contracted: true
+  export default {
+    data () {
+      return {
+        contracted: true
+      }
     }
   }
-}
 </script>
+
 
 <style>
   p {

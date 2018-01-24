@@ -1,3 +1,24 @@
+<!--
+
+NAME:
+  CarouselControl
+
+TYPE:
+  Vue Single File Component 
+
+PURPOSE:  
+  Providse controls (icons) to scroll items in the parent
+
+PARENT:
+  ImageCarousel
+
+PROPS:
+  (number) dir: Direction: -1 (left) 1 (right)
+
+EVENT:
+  emits the 'change-image' event with the direction as payload
+
+-->
 <template>
   <i 
       :class="classes"

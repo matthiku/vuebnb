@@ -1,3 +1,22 @@
+<!--
+
+NAME:
+  FeatureList
+
+TYPE:
+  Vue Singe File Component 
+
+PURPOSE:  
+  shows a list of items
+
+PARENT:
+  ListingPage
+
+PROPS:
+  (text) title: Name of the feature
+  (array) items: list of items
+
+-->
 <template>
   <div>
 
@@ -9,7 +28,7 @@
       </div>
 
       <div class="content">
-        <div class="list-item" v-for="item in items">
+        <div class="list-item" v-for="(item, index) in items" :key="index">
           <slot v-bind="item"></slot>
         </div>
       </div>
@@ -18,11 +37,13 @@
   </div>  
 </template>
 
+
 <script>
 export default {
   props: ['title', 'items']
 }
 </script>
+
 
 <style>
   hr {

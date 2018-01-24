@@ -1,14 +1,37 @@
+<!--
+
+NAME:
+  CustomFooter
+
+TYPE:
+  Vue Single File Component 
+
+PURPOSE:  
+  Shows footer of the page
+
+PARENT:
+  App
+
+DATA:
+  (Vuex store) aligns the text in the middle according to the current path/route
+
+-->
 <template>
   <div id="footer">
+
     <div class="hr"></div>
+
     <div :class="containerClass">
       <p>
         <img class="icon" src="/images/logo_grey.png">
+
         <span>
           <strong>Vuebnb</strong>. A full-stack Vue.js and Laravel demo app
         </span>
+
       </p>
     </div>
+
   </div>
 </template>
 

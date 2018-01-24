@@ -1,3 +1,20 @@
+<!--
+
+NAME:
+  ListingSummaryGroup
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Shows a row of items with scroll controls on both sides
+
+PROPS:
+  Parent (caller) must provide:
+  - a text for the title
+  - an array of items
+
+-->
 <template>
   <div class="listing-summary-group">
 

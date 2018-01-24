@@ -1,3 +1,21 @@
+<!--
+
+NAME:
+  ListingPage
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Shows the complete Listing of an item
+
+DATA:
+  A mixin calles the local method 'assignData' to 
+  populate the data with either with an API call (AJAX)
+  or via the data from the HTML head section
+  (see route-mixin.js)
+
+-->
 <template>
   <div>
 
@@ -59,7 +77,7 @@
   import routeMixin from '../js/route-mixin'
 
   export default {
-    mixins: [ routeMixin],
+    mixins: [ routeMixin ],
 
     components: {
       ExpandableText,

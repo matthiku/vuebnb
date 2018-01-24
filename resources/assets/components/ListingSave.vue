@@ -1,3 +1,26 @@
+<!--
+
+NAME:
+  ListingSave
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Shows an icon or button to save/remove the current item to the favourites list
+
+PROPS:
+  Parent (caller) must provide:
+  - the 'id' of the item
+  - (optional)(boolean) whether this should be rendered as a button
+
+READS:
+  (Vuex Store) state.saved
+
+WRITES:
+  (Vuex Store Commit) 'toggleSaved'
+
+-->
 <template>
   <div class="listing-save" @click.stop="toggleSaved()">
 

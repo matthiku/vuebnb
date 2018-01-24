@@ -1,3 +1,21 @@
+<!--
+
+NAME:
+  App
+
+TYPE:
+  Vue Single File Component 
+
+PURPOSE:  
+  Main page of this app
+
+PARENT:
+  none
+
+CHILDREN:
+  (toolbar), RouterView, CustomFooter
+
+-->
 <template>
   <div>
 
@@ -18,11 +36,11 @@
 
 
 <script>
-import CustomFooter from './CustomFooter.vue'
+  import CustomFooter from './CustomFooter.vue'
 
-export default {
-  components: { CustomFooter }
-}
+  export default {
+    components: { CustomFooter }
+  }
 </script>
 
 

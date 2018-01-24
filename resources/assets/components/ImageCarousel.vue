@@ -1,3 +1,19 @@
+<!--
+
+NAME:
+  ImageCarousel
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Shows a single image at a time with controls to scroll to the next/previous image
+
+PROPS:
+  Parent (caller) must provide:
+  - an array of images
+
+-->
 <template>
   <div class="image-carousel">
 

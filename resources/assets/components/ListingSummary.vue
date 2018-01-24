@@ -1,3 +1,22 @@
+<!--
+
+NAME:
+  ListingSummary
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Shows a single item as part of a listing,
+  provides:
+  - a link to the details page
+  - (ListingSave) an option to add this item to the user's favourites
+
+PROPS:
+  Parent (caller) must provide:
+  - (listing): the item as an opject
+
+-->
 <template>
   <div class="listing-summary">
 
@@ -29,7 +48,9 @@
 
   export default {
     components: { ListingSave },
+
     props: ['listing'],
+
     computed: {
       backgroundImageStyle() {
         return {

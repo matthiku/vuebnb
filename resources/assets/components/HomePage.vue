@@ -1,3 +1,24 @@
+<!--
+
+NAME:
+  HomePage
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Entry page showing all available listings
+
+IMPORTS:
+  ListingSummaryGroup - show listings in rows
+
+DATA:
+  A mixin calles the local method 'assignData' to 
+  populate the data either with an API call (AJAX)
+  or via the data from the HTML head section
+  (see route-mixin.js)
+
+-->
 <template>
   <div class="home-container">
 

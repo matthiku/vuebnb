@@ -1,3 +1,25 @@
+<!--
+
+NAME:
+  HeaderImage
+
+TYPE:
+  Vue Sigle File Component
+
+PURPOSE:  
+  Shows the complete Listing of an item
+
+DATA:
+  A mixin calles the local method 'assignData' to 
+  populate the data with either with an API call (AJAX)
+  or via the data from the HTML head section
+  (see route-mixin.js)
+
+CHILD:
+  ListingSave.vue
+  - shows a button or icon that enables the user to save this listing as favourite
+
+-->
 <template>
   <div class="header">
     <div 

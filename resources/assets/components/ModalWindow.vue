@@ -1,3 +1,17 @@
+<!--
+
+TYPE:
+  Vue Component 
+
+PURPOSE:  
+  Shows a modal window in the center of the viewport
+
+  Provides a button which closes the modal
+
+OPTIONS:
+  Parent (caller) must provide the content
+
+-->
 <template>
   <div id="modal" :class="{ show : modalOpen }">
 
