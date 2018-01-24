@@ -5,6 +5,7 @@
         v-if="images[0]"
         :image-url="images[0]"
         @header-clicked="openModal"
+        :id="id"
       >
     </header-image>
 
@@ -75,7 +76,8 @@
         address: null,
         amenities: [],
         prices: [],
-        images: []
+        images: [],
+        id: null
       }
     },
 
