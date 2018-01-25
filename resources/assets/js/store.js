@@ -22,7 +22,6 @@ export default new Vuex.Store({
       }
     },
     addData(state, { route, data }) {
-      console.log('route:', route, 'data:', data)
       // push the new data into the Vuex store
       if (route === 'listing') {
         state.listings.push(data.listing);
@@ -30,5 +29,12 @@ export default new Vuex.Store({
         state.listing_summaries = data.listings;
       }      
     }
+  },
+
+  getters: {
+    getListing (state) {
+      return id => state.listings.find(listing => id == listing.id)
+    }
   }
+
 })

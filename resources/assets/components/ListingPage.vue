@@ -81,10 +81,9 @@ PURPOSE:
 
     computed: {
       listing () {
-        let listing = this.$store.state.listings.find(
-          listing => listing.id === parseInt(this.$route.params.listing)
+        return populateAmenitiesAndPrices(
+          this.$store.getters.getListing(this.$route.params.listing)
         )
-        return populateAmenitiesAndPrices(listing)
       }
     },
 

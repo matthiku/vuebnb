@@ -21,10 +21,29 @@ CHILDREN:
 
     <div id="toolbar">
 
-      <router-link :to="{name: 'home'}">
+      <!-- brand logo and name -->
+      <router-link 
+          :to="{name: 'home'}">
         <img class="icon" src="/images/logo.png">
         <h1>vuebnb</h1>
       </router-link>
+
+      <!-- navigation menu -->
+      <ul class="links">
+          <router-link 
+              tag="li" 
+              class="cursor-pointer"
+              :to="{name: 'home'}"
+            >Home
+          </router-link>
+
+          <router-link 
+              tag="li" 
+              class="cursor-pointer"
+              :to="{name: 'saved'}"
+            >Saved
+          </router-link>
+      </ul>
     </div>
 
     <router-view></router-view>
@@ -46,6 +65,8 @@ CHILDREN:
 
 <style>
   #toolbar {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid #e4e4e4;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   }
@@ -67,5 +88,42 @@ CHILDREN:
     display: flex;
     align-items: center;
     text-decoration: none;    
+  }
+
+  #toolbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0 24px 0 0;
+    margin: 0;
+  }
+
+  @media (max-width: 373px) {
+    #toolbar ul  {
+      padding-right: 12px;
+    }
+  }
+
+  #toolbar ul li {
+    padding: 10px 10px 0 10px;
+  }
+
+  ul li.router-link-exact-active {
+    text-decoration: underline;
+  }
+
+  #toolbar ul li a {
+    text-decoration: none;
+    line-height: 1;
+    color: inherit;
+    font-size: 13px;
+    padding-bottom: 8px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  #toolbar ul li a:hover {
+    border-bottom: 2px solid #484848;
+    padding-bottom: 6px;
   }
 </style>
