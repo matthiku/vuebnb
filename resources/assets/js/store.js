@@ -4,7 +4,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    saved: []
+    saved: [],
+    listing_summaries: [],
+    listings: []
   },
 
   mutations: {
@@ -18,6 +20,15 @@ export default new Vuex.Store({
       } else {
         state.saved.splice(index, 1);
       }
+    },
+    addData(state, { route, data }) {
+      console.log('route:', route, 'data:', data)
+      // push the new data into the Vuex store
+      if (route === 'listing') {
+        state.listings.push(data.listing);
+      } else {
+        state.listing_summaries = data.listings;
+      }      
     }
   }
 })

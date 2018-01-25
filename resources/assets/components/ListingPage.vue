@@ -9,46 +9,42 @@ TYPE:
 PURPOSE:  
   Shows the complete Listing of an item
 
-DATA:
-  A mixin calles the local method 'assignData' to 
-  populate the data with either with an API call (AJAX)
-  or via the data from the HTML head section
-  (see route-mixin.js)
 
 -->
 <template>
-  <div>
+  <div v-if="listing.id">
 
     <header-image
-        v-if="images[0]"
-        :image-url="images[0]"
+        v-if="listing.images"
+        :image-url="listing.images[0]"
         @header-clicked="openModal"
-        :id="id"
+        :id="listing.id"
       >
     </header-image>
 
-    <div class="listing-container">
+    <div
+        class="listing-container">
 
       <div class="heading">
-        <h1>{{ title }}</h1>
-        <p>{{ address }}</p>
+        <h1>{{ listing.title }}</h1>
+        <p>{{ listing.address }}</p>
       </div>
 
       <hr>
       <div class="about">
         <h3>About this listing</h3>
-        <expandable-text>{{ about }}</expandable-text>
+        <expandable-text>{{ listing.about }}</expandable-text>
       </div>
 
       <div class="lists">
-        <feature-list title="Amenities" :items="amenities">
+        <feature-list title="Amenities" :items="listing.amenities">
           <template slot-scope="amenity">
             <i class="fa fa-lg" v-bind:class="amenity.icon"></i>
             <span>{{ amenity.title }}</span>
           </template>
         </feature-list>
 
-        <feature-list title="Prices" :items="prices">
+        <feature-list title="Prices" :items="listing.prices">
           <template slot-scope="price">
               {{ price.title }}: <strong>{{ price.value }}</strong>
           </template>
@@ -58,7 +54,7 @@ DATA:
     </div>
 
     <modal-window ref="imagemodal">
-      <image-carousel :images="images"></image-carousel>
+      <image-carousel :images="listing.images"></image-carousel>
     </modal-window>
 
   </div>  
@@ -74,11 +70,7 @@ DATA:
   import FeatureList from './FeatureList.vue'
   import ExpandableText from './ExpandableText.vue'
 
-  import routeMixin from '../js/route-mixin'
-
   export default {
-    mixins: [ routeMixin ],
-
     components: {
       ExpandableText,
       FeatureList,
@@ -87,22 +79,16 @@ DATA:
       ImageCarousel
     },
 
-    data() { 
-      return {
-        title: null,
-        about: null,
-        address: null,
-        amenities: [],
-        prices: [],
-        images: [],
-        id: null
+    computed: {
+      listing () {
+        let listing = this.$store.state.listings.find(
+          listing => listing.id === parseInt(this.$route.params.listing)
+        )
+        return populateAmenitiesAndPrices(listing)
       }
     },
 
     methods: {
-      assignData ({ listing }) {
-        Object.assign(this.$data, populateAmenitiesAndPrices(listing))
-      },
       openModal () {
         this.$refs.imagemodal.modalOpen = true;
       }
@@ -113,26 +99,25 @@ DATA:
 
 
 <style>
-.heading {
-  margin-bottom: 2em;
-}
+  .heading {
+    margin-bottom: 2em;
+  }
 
-.heading h1 {
-  font-size: 32px;
-  font-weight: 700;
-}
+  .heading h1 {
+    font-size: 32px;
+    font-weight: 700;
+  }
 
-.heading p {
-  font-size: 15px;
-  color: #767676;
-}
+  .heading p {
+    font-size: 15px;
+    color: #767676;
+  }
 
-.about {
-  margin-top: 2em;
-}
+  .about {
+    margin-top: 2em;
+  }
 
-.about h3 {
-  font-size: 22px;
-}
-
+  .about h3 {
+    font-size: 22px;
+  }
 </style>

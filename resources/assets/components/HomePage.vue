@@ -38,14 +38,14 @@ DATA:
 <script>
   import { groupByCountry } from '../js/helpers'
   import ListingSummaryGroup from './ListingSummaryGroup.vue'
-  import routeMixin from '../js/route-mixin'
 
   export default {
-    mixins: [ routeMixin],
-
-    data () {
-      return { listing_groups: [] }
+    computed: {
+      listing_groups() {
+        return groupByCountry(this.$store.state.listing_summaries);
+      }
     },
+
     components: {
       ListingSummaryGroup
     },
