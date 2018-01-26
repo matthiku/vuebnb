@@ -107,3 +107,24 @@ button {
     margin-bottom: -10px;
   }
 }
+
+/*
+We'll add a login-container class to our global CSS file so the footer for this page aligns correctly. 
+We'll also add a CSS rule to ensure text inputs display correctly on iPhone. 
+The login page will be the only place we'll have a text input, 
+but let's add it as a global rule in case you decide to add other forms later.
+*/
+.login-container {
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+@media (min-width: 374px) {
+  .login-container {
+    width: 350px;
+  }
+}
+
+input[type=text] {
+  -webkit-appearance: none;
+}

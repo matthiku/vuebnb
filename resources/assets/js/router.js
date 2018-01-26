@@ -3,6 +3,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+import LoginPage from '../components/Auth/LoginPage.vue'
+
 import ListingPage from '../components/ListingPage.vue'
 import HomePage from '../components/HomePage.vue'
 import SavedPage from '../components/SavedPage.vue'
@@ -15,10 +17,15 @@ let router = new VueRouter({
   mode: 'history',
 
   routes: [
-    { 
+    {
       path: '/',
       component: HomePage,
       name: 'home' 
+    },
+    {
+      path: '/login',
+      component: LoginPage,
+      name: 'login' 
     },
     { 
       path: '/listing/:listing',
@@ -38,13 +45,14 @@ let router = new VueRouter({
 // make sure we have the relvant data for the page
 router.beforeEach((to, from, next) => { 
   // read the data delivered in the header of the page (if any)
-  let serverData = JSON.parse(window.vuebnb_server_data)
+  let serverData = window.vuebnb_server_data ? JSON.parse(window.vuebnb_server_data) : null
 
   // first check if we already have the requested data in the store!
   if (
     to.name === 'listing'
       ? store.getters.getListing(to.params.listing)
       : store.state.listing_summaries.length > 0
+    || to.name === 'login'
   ) {
     next()
   }

@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +35,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    /**
+     * The LoginController class uses an AuthenticatesUsers trait that defines the 
+     * showLoginForm method that the /login route handler refers to. 
+     * We overwrite that method so it simply returns our app view.
+     * 
+     * Since this instance of the view doesn't need any data to be 
+     * inlined in the head (the login form has no state), 
+     * we will pass an empty array to the data template variable.
+     */
+    public function showLoginForm()
+    {
+        return view('app', ['data' => []]);
     }
 }

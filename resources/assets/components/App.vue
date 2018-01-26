@@ -29,17 +29,21 @@ CHILDREN:
       </router-link>
 
       <!-- navigation menu -->
-      <ul class="links">
+      <ul class="links cursor-pointer">
           <router-link 
               tag="li" 
-              class="cursor-pointer"
+              :to="{name: 'login'}"
+            >Login
+          </router-link>
+
+          <router-link 
+              tag="li" 
               :to="{name: 'home'}"
             >Home
           </router-link>
 
           <router-link 
               tag="li" 
-              class="cursor-pointer"
               :to="{name: 'saved'}"
             >Saved
           </router-link>

@@ -11,8 +11,12 @@
   <link rel="stylesheet" href="{{ asset('css/vue-style.css') }}" type="text/css">
 
   <script type="text/javascript">
+
     // include the data for this view (resource)
     window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
+
+    // provide the Anti-CSRF token
+    window.csrf_token = "{{ csrf_token() }}"
   </script>
 
 </head>
