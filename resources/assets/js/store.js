@@ -2,8 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import router from './router'
+
+import axios from 'axios'
+
 export default new Vuex.Store({
   state: {
+    auth: false,
     saved: [],
     listing_summaries: [],
     listings: []
@@ -22,12 +27,30 @@ export default new Vuex.Store({
       }
     },
     addData(state, { route, data }) {
+      // save authentication data from the host
+      if (data.auth) {
+        state.auth = data.auth;
+      }      
       // push the new data into the Vuex store
       if (route === 'listing') {
         state.listings.push(data.listing);
       } else {
         state.listing_summaries = data.listings;
       }      
+    }
+  },
+
+  actions: {
+    toggleSaved ({ commit, state}, id) {
+      // only if user is logged in
+      if (state.auth) {
+        axios.post('/api/user/toggle_saved', { id })
+          .then(
+            () => commit('toggleSaved', id)
+          )
+      } else {
+        router.push('/login')
+      }
     }
   },
 

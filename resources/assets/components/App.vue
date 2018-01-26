@@ -32,21 +32,37 @@ CHILDREN:
       <ul class="links cursor-pointer">
           <router-link 
               tag="li" 
-              :to="{name: 'login'}"
-            >Login
-          </router-link>
-
-          <router-link 
-              tag="li" 
               :to="{name: 'home'}"
             >Home
           </router-link>
 
           <router-link 
+              v-if="authenticated"
               tag="li" 
               :to="{name: 'saved'}"
             >Saved
           </router-link>
+
+          <router-link
+              v-if="!authenticated"
+              tag="li" 
+              :to="{name: 'login'}"
+            >Login
+          </router-link>
+
+          <li 
+              v-if="authenticated"
+              @click="logout"
+              class="router-link-active">
+            Logout
+            <form 
+                style="display: hidden"
+                action="/logout"
+                method="post"
+                id="logout">
+              <input type="hidden" name="_token" :value="csrf_token">
+            </form>
+          </li>
       </ul>
     </div>
 
@@ -62,7 +78,22 @@ CHILDREN:
   import CustomFooter from './CustomFooter.vue'
 
   export default {
-    components: { CustomFooter }
+    components: { CustomFooter },
+    data () {
+      return {
+        csrf_token: window.csrf_token
+      }
+    },
+    computed: {
+      authenticated () {
+        return this.$store.state.auth
+      }
+    },
+    methods: {
+      logout () {
+        document.getElementById('logout').submit()
+      }
+    }
   }
 </script>
 

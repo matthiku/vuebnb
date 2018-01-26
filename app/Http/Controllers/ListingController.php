@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Listing;
+use Auth;
 
 class ListingController extends Controller
 {
@@ -27,7 +28,9 @@ class ListingController extends Controller
     private function add_meta_data($collection, $request)
     {
         return $collection->merge([
-            'path' => $request->getPathInfo()
+            'path' => $request->getPathInfo(),
+            'auth' => Auth::check(),
+            'saved' => Auth::check() ? Auth::user()->saved : []
         ]);
     }
 
