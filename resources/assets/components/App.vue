@@ -31,16 +31,17 @@ CHILDREN:
       <!-- navigation menu -->
       <ul class="links cursor-pointer">
           <router-link 
+              v-if="routeName != 'home'"
               tag="li" 
               :to="{name: 'home'}"
-            >Home
+            >All Listings
           </router-link>
 
           <router-link 
-              v-if="authenticated"
+              v-if="routeName != 'saved' && authenticated"
               tag="li" 
               :to="{name: 'saved'}"
-            >Saved
+            >Saved Listings
           </router-link>
 
           <router-link
@@ -87,6 +88,9 @@ CHILDREN:
     computed: {
       authenticated () {
         return this.$store.state.auth
+      },
+      routeName () {
+        return this.$route.name
       }
     },
     methods: {

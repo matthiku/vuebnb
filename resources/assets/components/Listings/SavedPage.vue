@@ -1,5 +1,5 @@
 <template>
-  <div id="saved" class="home-container">
+  <div id="saved" class="saved-container">
 
     <h2>Saved listings</h2>
 
@@ -35,6 +35,25 @@ export default {
 
 
 <style>
+  .saved-container {
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  @media (min-width: 1131px) {
+    .saved-container {
+      width: 1095px;
+      padding-left: 40px;
+      margin-bottom: -10px;
+    }
+  }
+
+  @media (min-width: 1231px) {
+    .saved-container {
+      width: 1195px;
+    }
+  }
+
   #saved .listing-summaries {
     display: flex;
     flex-wrap: wrap;

@@ -70,4 +70,10 @@ DATA:
       width: 1080px;
     }
   }
+
+  @media (min-width: 1231px) {
+    .home-container {
+      width: 1180px;
+    }
+  }
 </style>

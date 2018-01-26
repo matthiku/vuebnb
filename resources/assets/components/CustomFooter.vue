@@ -49,9 +49,9 @@ export default {
 
 
 <style>
-  #footer {
+  /* #footer {
     margin-bottom: 3em;
-  }
+  } */
 
   #footer .icon {
     height: 23px;
