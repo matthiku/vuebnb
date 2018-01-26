@@ -36,7 +36,7 @@ DATA:
 
 
 <script>
-  import { groupByCountry } from '../js/helpers'
+  import { groupByCountry } from '../../js/helpers'
   import ListingSummaryGroup from './ListingSummaryGroup.vue'
 
   export default {
@@ -49,6 +49,7 @@ DATA:
     components: {
       ListingSummaryGroup
     },
+
     methods: {
       assignData ({ listings }) {
         this.listing_groups = groupByCountry(listings)

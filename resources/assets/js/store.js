@@ -15,6 +15,8 @@ export default new Vuex.Store({
   state: {
     auth: false,
     saved: [],
+    loading: false,
+    loading_id: null,
     listing_summaries: [],
     listings: []
   },
@@ -26,10 +28,11 @@ export default new Vuex.Store({
       // if not found, push it into the array
       if (index === -1) {
         state.saved.push(id);
-      // if found, remove it from the array
+        // if found, remove it from the array
       } else {
         state.saved.splice(index, 1);
       }
+      state.loading = false
     },
     addData(state, { route, data }) {
       // save authentication data from the host
@@ -46,9 +49,11 @@ export default new Vuex.Store({
   },
 
   actions: {
-    toggleSaved ({ commit, state}, id) {
+    toggleSaved ({ commit, state }, id) {
       // only if user is logged in
       if (state.auth) {
+        state.loading = true
+        state.loading_id = id
         axios.post('/api/user/toggle_saved', { id })
           .then(
             () => commit('toggleSaved', id)

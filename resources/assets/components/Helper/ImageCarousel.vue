@@ -28,7 +28,7 @@ PROPS:
 </template>
 
 <script>
-import CarouselControl from '../components/CarouselControl.vue'
+import CarouselControl from './CarouselControl.vue'
 
 export default {
   components: {

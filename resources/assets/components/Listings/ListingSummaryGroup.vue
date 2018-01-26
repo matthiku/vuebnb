@@ -57,7 +57,7 @@ PROPS:
   const listingSummaryWidth = 365
 
   import ListingSummary from './ListingSummary.vue'
-  import CarouselControl from './CarouselControl.vue'
+  import CarouselControl from '../Helper/CarouselControl.vue'
 
   export default {
     props: [ 'country', 'listings' ],

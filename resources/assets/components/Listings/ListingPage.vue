@@ -62,13 +62,13 @@ PURPOSE:
 
 
 <script>
-  import { populateAmenitiesAndPrices } from '../js/helpers';
+  import { populateAmenitiesAndPrices } from '../../js/helpers';
 
-  import ImageCarousel from './ImageCarousel.vue'
-  import ModalWindow from './ModalWindow.vue'
+  import ImageCarousel from '../Helper/ImageCarousel.vue'
+  import ModalWindow from '../Helper/ModalWindow.vue'
   import HeaderImage from './HeaderImage.vue'
   import FeatureList from './FeatureList.vue'
-  import ExpandableText from './ExpandableText.vue'
+  import ExpandableText from '../Helper/ExpandableText.vue'
 
   export default {
     components: {

@@ -5,9 +5,9 @@ Vue.use(VueRouter);
 
 import LoginPage from '../components/Auth/LoginPage.vue'
 
-import ListingPage from '../components/ListingPage.vue'
-import HomePage from '../components/HomePage.vue'
-import SavedPage from '../components/SavedPage.vue'
+import ListingPage from '../components/Listings/ListingPage.vue'
+import HomePage from '../components/Listings/HomePage.vue'
+import SavedPage from '../components/Listings/SavedPage.vue'
 
 import axios from 'axios';
 import store from './store';
@@ -59,9 +59,11 @@ router.beforeEach((to, from, next) => {
 
   // if there was no data, we need to get it via an AJAX call  
   else if (!serverData.path || to.path !== serverData.path) {
+    store.state.loading = true
     axios.get(`/api${to.path}`)
       .then(({ data }) => {
         store.commit('addData', { route: to.name, data })
+        store.state.loading = false
         next();
       })
   }

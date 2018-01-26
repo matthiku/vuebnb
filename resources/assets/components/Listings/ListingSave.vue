@@ -25,11 +25,13 @@ WRITES:
   <div class="listing-save" @click.stop="toggleSaved()">
 
     <button v-if="button">
-      <i :class="classes"></i>
+      <i  class="fa fa-lg"
+          :class="icon"
+        ></i>
       {{ message }}
     </button>
 
-    <i v-else :class="classes"></i>
+    <i v-else class="fa fa-lg" :class="icon"></i>
 
   </div>
 </template>
@@ -43,22 +45,21 @@ WRITES:
       isListingSaved () {
         return this.$store.state.saved.find(saved => saved === this.id)
       },
-      classes () {
-        return {
-          'fa': true,
-          'fa-lg': true,
-          'fa-heart': this.isListingSaved,
-          'fa-heart-o': !this.isListingSaved
-        }
+      icon () {
+        if (this.loading) return 'fa-spin fa-spinner'
+        if (this.isListingSaved) return 'fa-heart'
+        return 'fa-heart-o'
       },
       message () {
         return this.isListingSaved ? 'Saved' : 'Save'
+      },
+      loading () {
+        return this.$store.state.loading && this.$store.state.loading_id === this.id
       }
     },
     
     methods: {
       toggleSaved() {
-        // Implement this
         this.$store.dispatch('toggleSaved', this.id)
       }
     }
