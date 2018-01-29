@@ -24,7 +24,7 @@ CHILDREN:
       <!-- brand logo and name -->
       <router-link 
           :to="{name: 'home'}">
-        <img class="icon" src="/images/logo.png">
+        <img class="icon" :src="logoUrl">
         <h1>vuebnb</h1>
       </router-link>
 
@@ -91,6 +91,9 @@ CHILDREN:
       },
       routeName () {
         return this.$route.name
+      },
+      logoUrl () {
+        return `${window.cdn_url || ''}images/logo.png`
       }
     },
     methods: {

@@ -7,21 +7,25 @@
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "ftp-deploy-with-images": "cross-env node ./ftp.js",
+    "ftp-deploy": "cross-env FTP_SKIP_IMAGES=1 node ./ftp.js"
   },
   "devDependencies": {
     "axios": "^0.17",
     "browser-sync": "^2.23.5",
     "browser-sync-webpack-plugin": "^1.2.0",
     "cross-env": "^5.1",
+    "dotenv": "^4.0.0",
     "font-awesome": "^4.7.0",
+    "ftp": "^0.3.10",
     "laravel-mix": "^1.4",
     "open-sans-all": "^0.1.3",
+    "recursive-readdir": "^2.2.1",
     "vue": "^2.5.3",
     "vue-router": "^3.0.1"
   },
   "dependencies": {
-    "dotenv": "^4.0.0",
     "vuex": "^3.0.1"
   }
 }

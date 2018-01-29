@@ -54,6 +54,15 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+
+    /* provide access to the usage of CDN settings for production
+    */
+    'cdn' => [
+        'url' => env('CDN_URL'),
+        'bypass' => env('CDN_BYPASS', false)
+    ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

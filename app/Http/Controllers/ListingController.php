@@ -10,15 +10,15 @@ use Auth;
 class ListingController extends Controller
 {
 
-    /*  Abstract any common logic from our listing route methods into a new helper method.
-        Nest the Listing model inside a Laravel Collection under the listing ke
-    */
+    /**
+     *   Abstract any common logic from our listing route methods into a new helper method.
+     *   Nest the Listing model inside a Laravel Collection under the listing ke
+     */
     private function get_listing($listing) 
     {
         $model = $listing->toArray();
         for ($i = 1; $i <=4; $i++) {
-            $model['image_' . $i] = asset(
-                'images/' . $listing->id . '/Image_' . $i . '.jpg');
+            $model['image_' . $i] = cdn('images/' . $listing->id . '/Image_' . $i . '.jpg');
         }
         return collect(['listing' => $model]);
     }
@@ -40,12 +40,12 @@ class ListingController extends Controller
         $collection = Listing::all([
             'id', 'address', 'title', 'price_per_night'
         ]);
-        $collection->transform(function($listing) {
-            $listing->thumb = asset(
-                'images/' . $listing->id . '/Image_1_thumb.jpg'
-            );
-            return $listing;
-        });
+        $collection->transform(
+            function ($listing) {
+                $listing->thumb = cdn('images/' . $listing->id . '/Image_1_thumb.jpg');
+                return $listing;
+            }
+        );
         return collect(['listings' => $collection->toArray()]);
     }
 
