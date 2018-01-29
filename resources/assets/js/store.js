@@ -18,7 +18,8 @@ export default new Vuex.Store({
     loading: false,
     loading_id: null,
     listing_summaries: [],
-    listings: []
+    listings: [],
+    serverData: []
   },
 
   mutations: {

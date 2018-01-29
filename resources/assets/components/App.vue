@@ -41,7 +41,7 @@ CHILDREN:
               v-if="routeName != 'saved' && authenticated"
               tag="li" 
               :to="{name: 'saved'}"
-            >Saved Listings
+            >Saved Listings<sup v-if="savedCount">({{ savedCount }})</sup>
           </router-link>
 
           <router-link
@@ -91,6 +91,9 @@ CHILDREN:
       },
       routeName () {
         return this.$route.name
+      },
+      savedCount () {
+        return this.$store.state.saved.length
       },
       logoUrl () {
         return `${window.cdn_url || ''}images/logo.png`

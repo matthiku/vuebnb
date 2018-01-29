@@ -14,6 +14,10 @@
     // provide the source URL for assets
     window.cdn_url = "{{ cdn('') }}"
 
+    window.vuebnb_registration_route = "{{ route('register') }}"
+    window.vuebnb_login_route = "{{ route('login') }}"
+    window.vuebnb_auth_errors = JSON.parse("{!! addslashes($errors) !!}")
+
     // include the data for this view (resource)
     window.vuebnb_server_data = "{!! addslashes(json_encode($data)) !!}"
 

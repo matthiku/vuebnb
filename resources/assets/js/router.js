@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import LoginPage from '../components/Auth/LoginPage.vue'
+import Register from '../components/Auth/Register.vue'
 
 import ListingPage from '../components/Listings/ListingPage.vue'
 import HomePage from '../components/Listings/HomePage.vue'
@@ -21,6 +22,11 @@ let router = new VueRouter({
       path: '/',
       component: HomePage,
       name: 'home' 
+    },
+    {
+      path: '/register',
+      component: Register,
+      name: 'register'
     },
     {
       path: '/login',
@@ -46,6 +52,7 @@ let router = new VueRouter({
 router.beforeEach((to, from, next) => { 
   // read the data delivered in the header of the page (if any)
   let serverData = window.vuebnb_server_data ? JSON.parse(window.vuebnb_server_data) : null
+  store.state.serverData = serverData
 
   // first check if we already have the requested data in the store!
   if (
@@ -53,6 +60,7 @@ router.beforeEach((to, from, next) => {
       ? store.getters.getListing(to.params.listing)
       : store.state.listing_summaries.length > 0
     || to.name === 'login'
+    || to.name === 'register'
   ) {
     next()
   }
@@ -70,7 +78,9 @@ router.beforeEach((to, from, next) => {
   // save the data from the HEAD section into our Vuex State
   else {
     store.commit('addData', { route: to.name, data: serverData })
-    serverData.saved.forEach(id => store.commit('toggleSaved', id))
+    if (serverData.saved) {
+      serverData.saved.forEach(id => store.commit('toggleSaved', id))
+    }
     next()
   }
 })

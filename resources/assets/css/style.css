@@ -97,10 +97,14 @@ but let's add it as a global rule in case you decide to add other forms later.
 
 @media (min-width: 374px) {
   .login-container {
-    width: 350px;
+    width: 450px;
   }
 }
 
 input[type=text] {
   -webkit-appearance: none;
+}
+
+.error-msg {
+  color: red;
 }

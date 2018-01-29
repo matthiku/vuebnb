@@ -46,6 +46,8 @@ class LoginController extends Controller
      * Since this instance of the view doesn't need any data to be 
      * inlined in the head (the login form has no state), 
      * we will pass an empty array to the data template variable.
+     * 
+     * @return view Vue app
      */
     public function showLoginForm()
     {
