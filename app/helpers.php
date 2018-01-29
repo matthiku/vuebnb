@@ -9,7 +9,7 @@ if (!function_exists('cdn'))
     if (Config::get('app.cdn.bypass') || !Config::get('app.cdn.url')) {
       return asset($asset);
     } else {
-      return  "//" . Config::get('app.cdn.url') . '/' . $asset;
+      return  "http://" . Config::get('app.cdn.url') . '/' . $asset;
     }
   }
 }
